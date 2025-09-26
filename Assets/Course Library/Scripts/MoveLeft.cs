@@ -3,6 +3,7 @@ using UnityEngine;
 public class MoveLeft : MonoBehaviour
 {
     private float speed = 30;
+    private float leftBound = -15;
     private PlayerController playerScript;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -15,6 +16,11 @@ public class MoveLeft : MonoBehaviour
         if (playerScript.gameOver == false)
         {
             transform.Translate(Vector3.left * Time.deltaTime * speed);    
+        }
+
+        if (transform.position.x < leftBound && gameObject.CompareTag("Obstacle"))
+        {
+            Destroy(gameObject);
         }
     }
 }
