@@ -9,9 +9,13 @@ public class PlayerController : MonoBehaviour
     public bool isOnGround = true;
 
     public float gravityModifier;
+
+	private Animator playerAnim;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
         playerBody = GetComponent<Rigidbody>();
+		playerAnim = GetComponent<Animator>();
         Physics.gravity *= gravityModifier;
     }
 
@@ -22,6 +26,7 @@ public class PlayerController : MonoBehaviour
         {
             playerBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isOnGround = false;
+			// playerAnim.SetTrigger("Jump_trig");
         }
     }
 
