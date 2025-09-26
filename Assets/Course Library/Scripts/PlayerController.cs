@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isOnGround && Input.GetKeyDown(KeyCode.Space))
+        if (!gameOver && isOnGround && Input.GetKeyDown(KeyCode.Space))
         {
             playerBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isOnGround = false;
@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
         {
             gameOver = true;
             Debug.Log("Game Over");
+			playerAnim.SetBool("Death_b", true);
+			playerAnim.SetInteger("DeathType_int", 1);
         }
     }
 }
