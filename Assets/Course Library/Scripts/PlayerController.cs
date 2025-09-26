@@ -24,7 +24,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollision(Collision collision) {
+    private void OnCollisionEnter(Collision collision) {
+        Debug.Log("Collision");
         isOnGround = true;
     }
 }
